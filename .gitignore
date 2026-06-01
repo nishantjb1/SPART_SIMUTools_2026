@@ -16,13 +16,6 @@ build/
 .eggs/
 .pytest_cache/
 
-# --- Experiment result files (large; excludes everything except synthetic demo) ---
-results/fidelity/
-results/ablation/
-results/benchmark/
-results/grid_crossover/
-# Keep results/synthetic_demo/ -- it's the reproducible no-dataset demo output
-
 # --- Old / confidential files (read-only reference material, NOT for release) ---
 SPART_Old.ipynb
 SPART_ITSC_Old.pdf

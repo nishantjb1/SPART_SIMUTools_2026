@@ -1,0 +1,116 @@
+{
+  "n_csvs": 4,
+  "per_csv": [
+    {
+      "csv": "vehicle_tracks_000.csv",
+      "n_frames": 8750,
+      "K_beams": 241,
+      "mean_n_veh": 6.7544,
+      "jit_vanilla": {
+        "mean_scan_ms": 0.036588914288898065,
+        "mean_full_ms": 0.1620423885559181,
+        "scan_hz": 27330.682515043183,
+        "full_hz": 6171.224757372154,
+        "mean_candidates": 6511.2416
+      },
+      "spart": {
+        "mean_scan_ms": 0.028765942858756586,
+        "mean_full_ms": 0.18453692571243405,
+        "scan_hz": 34763.3312389617,
+        "full_hz": 5418.969651409015,
+        "mean_candidates": 107.94171428571428,
+        "mean_sei": 60.321828711791554,
+        "muting_pct": 54.10833524831844
+      },
+      "speedup_scan": 1.2719525470989421,
+      "speedup_full": 0.8781027858263476
+    },
+    {
+      "csv": "vehicle_tracks_001.csv",
+      "n_frames": 8750,
+      "K_beams": 241,
+      "mean_n_veh": 7.545371428571428,
+      "jit_vanilla": {
+        "mean_scan_ms": 0.05731100571117297,
+        "mean_full_ms": 0.2507221828572386,
+        "scan_hz": 17448.655587020115,
+        "full_hz": 3988.4783572158067,
+        "mean_candidates": 7273.7380571428575
+      },
+      "spart": {
+        "mean_scan_ms": 0.024714057142721554,
+        "mean_full_ms": 0.1598603885641621,
+        "scan_hz": 40462.80196833268,
+        "full_hz": 6255.458334499398,
+        "mean_candidates": 125.34468571428572,
+        "mean_sei": 58.02988787033879,
+        "muting_pct": 50.77939431009798
+      },
+      "speedup_scan": 2.3189638746971752,
+      "speedup_full": 1.568382168398195
+    },
+    {
+      "csv": "vehicle_tracks_002.csv",
+      "n_frames": 8750,
+      "K_beams": 241,
+      "mean_n_veh": 7.421485714285715,
+      "jit_vanilla": {
+        "mean_scan_ms": 0.06323701715092674,
+        "mean_full_ms": 0.27723721143556757,
+        "scan_hz": 15813.522602011994,
+        "full_hz": 3607.0193998196705,
+        "mean_candidates": 7154.312228571429
+      },
+      "spart": {
+        "mean_scan_ms": 0.022568217140880215,
+        "mean_full_ms": 0.14852702856296673,
+        "scan_hz": 44310.10184621954,
+        "full_hz": 6732.781296947975,
+        "mean_candidates": 115.93702857142857,
+        "mean_sei": 61.70860437538013,
+        "muting_pct": 52.457812569856785
+      },
+      "speedup_scan": 2.8020386704086957,
+      "speedup_full": 1.8665775119714003
+    },
+    {
+      "csv": "vehicle_tracks_003.csv",
+      "n_frames": 8750,
+      "K_beams": 241,
+      "mean_n_veh": 7.3856,
+      "jit_vanilla": {
+        "mean_scan_ms": 0.0672471314259123,
+        "mean_full_ms": 0.2967335428414766,
+        "scan_hz": 14870.522783588516,
+        "full_hz": 3370.026827517198,
+        "mean_candidates": 7119.7184
+      },
+      "spart": {
+        "mean_scan_ms": 0.019433737128357668,
+        "mean_full_ms": 0.12410262858174974,
+        "scan_hz": 51456.90679024376,
+        "full_hz": 8057.847053104706,
+        "mean_candidates": 116.46514285714285,
+        "mean_sei": 61.131753461489396,
+        "muting_pct": 52.011914905822465
+      },
+      "speedup_scan": 3.4603293736944405,
+      "speedup_full": 2.3910335037425114
+    }
+  ],
+  "aggregate": {
+    "spart": {
+      "mean_scan_hz": 42748.28546093942,
+      "mean_full_hz": 6616.264083990273,
+      "mean_sei": 60.29801860474997,
+      "mean_muting_pct": 52.33936425852392
+    },
+    "jit_vanilla": {
+      "mean_scan_hz": 18865.845871915953,
+      "mean_full_hz": 4284.187335481207
+    },
+    "speedup_scan": 2.265908761852831,
+    "speedup_full": 1.5443451851871748
+  },
+  "gate_passed": true
+}
