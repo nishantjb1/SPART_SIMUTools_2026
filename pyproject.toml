@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "spart"
+version = "0.1.0"
+description = "SPART: Lightweight 2-D LiDAR emulator for AV trajectory-dataset benchmarking"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["lidar", "simulation", "autonomous-vehicles", "numba", "ray-casting"]
+dependencies = [
+    "numpy>=1.24",
+    "numba>=0.57",
+    "matplotlib>=3.7",
+    "pandas>=1.5",
+    "pyyaml>=6.0",
+    "psutil>=5.9",
+    "pillow>=9.0",
+]
+
+[project.scripts]
+spart = "spart.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spart*"]

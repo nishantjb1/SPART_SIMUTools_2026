@@ -1,0 +1,22 @@
+{
+  "n_vehicles": 15,
+  "n_frames": 100,
+  "seed": 42,
+  "fov_deg": 120.0,
+  "delta_deg": 0.5,
+  "r_max_m": 15.0,
+  "gif_frames_rendered": 50,
+  "gif_step": 2,
+  "pointcloud_rows": 24100,
+  "fidelity": {
+    "fp_total": 0,
+    "ap_total": 0,
+    "max_range_err_m": 0.0,
+    "gate": "PASS",
+    "n_frames_checked": 100
+  },
+  "warmup_sec": 4.67,
+  "total_sec": 13.16,
+  "max_seconds": 60.0,
+  "timing_gate": "PASS"
+}

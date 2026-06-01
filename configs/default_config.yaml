@@ -1,0 +1,28 @@
+# configs/default_config.yaml
+# Default configuration for python -m spart run and python -m spart demo.
+# Override any value with --config your_config.yaml on the CLI.
+
+csv_path: null              # required for 'run' command; null for 'demo'
+output_dir: results
+
+n_frames: null              # null = use all available frames
+frame_start: null           # null = start from first frame
+
+fov_deg: 120.0
+delta_deg: 0.5
+r_max_m: 15.0
+
+ego_mode: circular
+ego_circle_radius_m: 15.0
+ego_circle_speed_mps: 5.398298934
+ego_circle_center: [996.0, 999.0]
+
+enable_grid: false
+numba_threads: 4
+warmup_numba: true
+
+save_gif: false
+gif_fps: 10
+frames_for_gif: 100
+
+save_pointcloud: false

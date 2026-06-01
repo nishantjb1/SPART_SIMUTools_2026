@@ -1,0 +1,49 @@
+# configs/benchmark_config.yaml
+# Single source of truth for all benchmark parameters.
+# n_frames confirmed from vehicle_tracks_000.csv: 8875 frames available.
+# Using 8750 to match original paper and avoid boundary effects.
+# ALL experiment scripts must import this file and use these values.
+
+# --- Shared parameters: IDENTICAL for ALL methods ---
+n_frames: 8750          # single source of truth; matches paper Table III
+fov_deg: 120.0
+delta_deg: 0.5
+r_max_m: 15.0
+
+ego_mode: circular
+ego_circle_radius_m: 15.0
+ego_circle_speed_mps: 5.398298934
+ego_circle_center: [996.0, 999.0]   # within x=[971,1021] y=[981,1018]
+
+# --- SPART-specific ---
+enable_grid: false        # NOTE: grid disabled for main benchmark.
+                          # INTERACTION dataset mean N~6.8 vehicles/frame
+                          # is below the crossover threshold. See exp4 for
+                          # the grid crossover study.
+numba_threads: 4
+warmup_numba: true
+
+# --- Vanilla-specific ---
+vanilla_use_jit: false    # Condition A: pure Python (benchmark baseline)
+
+# --- Ablation conditions (exp2_ablation.py) ---
+# A: scan_python_vanilla   -- no JIT, no pruning
+# B: scan_jit_vanilla      -- JIT, no pruning
+# C: JIT + temporal muting only (via core.py eligibility, scan_jit_vanilla kernel)
+# D: scan_jit_angular_only -- JIT + angular pruning, no muting
+# E: full SPART            -- JIT + angular + temporal muting
+
+# --- Fidelity experiment (exp1_fidelity.py) ---
+fidelity_n_sample_frames: 500
+fidelity_warmup_frames: 100         # frames to run before sampling begins
+
+# --- Grid crossover experiment (exp4_grid_crossover.py) ---
+grid_crossover_densities: [5, 10, 20, 50, 100, 200]
+grid_crossover_seeds: [0, 1, 2]
+grid_crossover_frames_per_seed: 500
+grid_crossover_area_m: 60.0         # square side length for vehicle placement
+
+# --- Synthetic demo (exp5_synthetic_demo.py) ---
+synthetic_demo_n_vehicles: 15
+synthetic_demo_n_frames: 100
+synthetic_demo_max_seconds: 60
