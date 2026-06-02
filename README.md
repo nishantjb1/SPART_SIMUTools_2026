@@ -10,13 +10,13 @@ It replaces the brute-force O(K × M) ray–segment intersection search with two
 | Metric | Value |
 |--------|-------|
 | Scan Efficiency Index (SEI) | **60.3×** fewer intersection tests than brute-force JIT |
-| Scan-kernel throughput | **14,845 Hz** (SPART) vs 6,895 Hz (JIT vanilla) |
-| Full-pipeline throughput | **1,648 Hz** — 164× real-time at 10 Hz LiDAR |
-| Full-pipeline speedup over JIT vanilla | **1.28–1.44×** across 4 recording sessions |
-| Geometric fidelity | **FP = 0, AP = 0, range error = 0.000 m** (all frames) |
+| Scan-kernel throughput | **42,748 Hz** (SPART) vs 18,866 Hz (JIT vanilla) — 2.27× speedup |
+| Full-pipeline throughput | **6,616 Hz** — 662× real-time at 10 Hz LiDAR |
+| Full-pipeline speedup over JIT vanilla | **1.54×** aggregate (0.88–2.39× per session; scales with vehicle density) |
+| Geometric fidelity | **FP = 0, AP = 0, range error = 0.000 m** (all 35,000 frames) |
 | False Negatives | ~7.4% (100% attributable to temporal muting by design) |
 
-SEI is deterministic and machine-independent. Hz numbers are from a loaded Windows laptop (32 GB RAM); expect higher on a clean workstation.
+SEI is deterministic and machine-independent. Hz numbers are from a clean machine (fresh restart, no background processes); expect lower on a loaded workstation.
 
 ---
 
@@ -36,8 +36,8 @@ An optional **spatial grid** (disabled by default) provides additional speedup a
 
 ```bash
 # Clone the repository
-git clone <repo-url>
-cd spart
+git clone <anonymous-repository-url>
+cd SPART_SIMUTools_2026
 
 # Install in editable mode (recommended for reproducibility)
 pip install -e .
@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 **Python ≥ 3.9** required. Tested with Python 3.11, Numba 0.61, NumPy 2.0.
 
-> **First run note:** Numba JIT compilation takes 8–25 seconds on the first call per session. All experiment scripts report compile time separately.
+> **First run note:** Numba JIT compilation takes 4–25 seconds on the first call per session (4.7 s on a clean machine; up to 25 s under load). All experiment scripts report compile time separately.
 
 ---
 
@@ -63,7 +63,7 @@ Generates in `results/synthetic_demo/`:
 - `demo_pointcloud.csv` — 24,100 rows (100 frames × 241 beams)
 - `demo_fidelity.json` — geometric correctness check (FP=0, AP=0, err=0.000m)
 
-Completes in under 60 seconds on any modern machine.
+Completes in under 60 seconds on any modern machine (13 s on a clean machine including JIT warm-up).
 
 ---
 
@@ -138,12 +138,12 @@ configs/
 ├── benchmark_config.yaml     # Single source of truth for all experiment params
 └── default_config.yaml       # Defaults for python -m spart
 
-results/                      # Auto-generated outputs (git-ignored)
-├── fidelity/
-├── ablation/
-├── benchmark/
-├── grid_crossover/
-└── synthetic_demo/
+results/
+├── synthetic_demo/           # Committed: reproducible no-dataset demo outputs
+├── fidelity/                 # Git-ignored (large; regenerate with exp1_fidelity.py)
+├── ablation/                 # Git-ignored (regenerate with exp2_ablation.py)
+├── benchmark/                # Git-ignored (regenerate with exp3_main_benchmark.py)
+└── grid_crossover/           # Git-ignored (regenerate with exp4_grid_crossover.py)
 ```
 
 ---
@@ -187,4 +187,32 @@ angles, ranges, hit_tracks, metrics = spart.run_frame(
 print(f"Beams: {len(angles)}, Hits: {metrics['num_hits']}, "
       f"Candidates: {metrics['total_candidates']}, "
       f"Muted: {metrics['muted_ratio']:.1%}")
+```
+
+---
+
+## Correctness Fixes Applied in This Release
+
+The following bugs were identified and corrected before this release:
+
+| # | Bug | Impact |
+|---|-----|--------|
+| 1 | Data race in `total_candidates` inside `prange` | Non-deterministic candidate counts |
+| 2 | Ego trajectory mismatch between methods | Unfair timing comparison |
+| 3 | Frame count 3-way mismatch | Irreproducible results |
+| 4 | Grid module disabled but undisclosed | Incorrect performance characterisation |
+| 5 | Hardware specification documented incorrectly | Misleading benchmark context |
+| 6 | Theta normalisation missing in angular interval check | 2,155 pruning misses over 2,000 sampled frames |
+
+---
+
+## Citation
+
+```bibtex
+@inproceedings{spart2026,
+  title     = {SPART: A Lightweight 2-D LiDAR Emulation Tool for
+               Trajectory-Dataset-Driven Autonomous Vehicle Testing},
+  booktitle = {Proceedings of EAI SIMUTools 2026},
+  year      = {2026},
+}
 ```
