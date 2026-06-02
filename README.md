@@ -24,7 +24,7 @@ SEI is deterministic and machine-independent. Hz numbers are from a clean machin
 
 Each frame SPART applies two pruning stages:
 
-1. **Temporal eligibility (muting)**: vehicles outside the ego's detection range are deferred using a linear closing-velocity estimate. Muted vehicles are skipped entirely — no segment building, no kernel call. Achieves \approx52% muting on the INTERACTION intersection (\approx7 vehicles/frame, ego radius = 15 m).
+1. **Temporal eligibility (muting)**: vehicles outside the ego's detection range are deferred using a linear closing-velocity estimate. Muted vehicles are skipped entirely — no segment building, no kernel call. Achieves 52% muting on the INTERACTION intersection (~7 vehicles/frame, ego radius = 15 m).
 
 2. **Angular interval pruning**: for each segment kept by the eligibility filter, a tight [θ_min, θ_max] angular interval is precomputed. The scan kernel skips any (beam, segment) pair where the beam angle falls outside the interval. On 241 beams and ~13 segments, this reduces intersection tests from ~3,000 to ~108 per frame.
 
