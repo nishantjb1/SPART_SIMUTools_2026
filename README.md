@@ -35,8 +35,7 @@ An optional **spatial grid** (disabled by default) provides additional speedup a
 ## Installation
 
 ```bash
-# Clone the repository
-git clone <anonymous-repository-url>
+# Download the repository
 cd SPART_SIMUTools_2026
 
 # Install in editable mode (recommended for reproducibility)
