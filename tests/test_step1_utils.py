@@ -62,7 +62,7 @@ def allclose(a, b, tol=1e-9):
 
 
 # ---------------------------------------------------------------------------
-# Check group 1: normalize_angle  (checks 1-6)
+# Check group 1: normalize_angle (checks 1-6)
 # ---------------------------------------------------------------------------
 
 def test_normalize_angle():

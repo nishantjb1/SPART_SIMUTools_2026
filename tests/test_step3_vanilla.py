@@ -23,10 +23,6 @@ from spart.vanilla_kernel import (
 )
 from spart.scan_kernel import simulate_scan_numba_wrapper, warmup_numba_kernel
 
-# ---------------------------------------------------------------------------
-# Harness
-# ---------------------------------------------------------------------------
-
 _PASS = 0
 _FAIL = 0
 _ERRORS = []

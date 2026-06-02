@@ -14,11 +14,10 @@ Two claims verified for each CSV:
 
 Documents:
   false_negative_rate -- fraction of vanilla-JIT hits that SPART misses due
-  to temporal muting (eligibility scheduling).  Expected ~0.3-5%.
+  to temporal muting (eligibility scheduling).
   All FNs are attributed to muted vehicles and their distances logged.
 
 Gate: gate passes only if (1) AND (2) hold on ALL CSVs.
-If gate fails, do NOT proceed to exp2 -- there is a geometric bug.
 
 Usage:
     python scripts/exp1_fidelity.py [--csvs path1.csv path2.csv ...]
@@ -754,15 +753,15 @@ def print_summary(summary):
     verdict = "GATE PASSED" if summary["gate_passed"] else "GATE FAILED"
     print(f"  {verdict}  (gate = FP==0 AND angular_pruning_misses==0 AND max_err==0.0)")
     if summary["gate_passed"]:
-        print("  --> Safe to proceed to exp2_ablation.py")
+        print("")
     else:
         ov = summary["overall"]
         if ov["total_fp_beams"] > 0:
-            print("  --> BUG: FP > 0 (SPART hit but vanilla-on-processed missed)")
+            print("  --> FP > 0 (SPART hit but vanilla-on-processed missed)")
         if ov["total_angular_pruning_misses"] > 0:
-            print("  --> BUG: angular pruning misses (SPART missed a processed vehicle)")
+            print("  --> Angular pruning misses (SPART missed a processed vehicle)")
         if ov["max_range_error_m"] > 0:
-            print("  --> BUG: range mismatch on same-segment pairs")
+            print("  --> Range mismatch on same-segment pairs")
     print("=" * 72)
 
 

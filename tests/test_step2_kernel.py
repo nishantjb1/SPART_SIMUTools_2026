@@ -2,7 +2,7 @@
 tests/test_step2_kernel.py
 Validates spart/scan_kernel.py.
 Gate: serial and parallel kernels agree to within float epsilon.
-      total_candidates from parallel == serial count (data race fix confirmed).
+      total_candidates from parallel == serial count.
 """
 
 import math
@@ -20,10 +20,6 @@ from spart.scan_kernel import (
     simulate_scan_numba_wrapper,
 )
 from spart.utils import build_segments_from_frame, generate_ego_circular
-
-# ---------------------------------------------------------------------------
-# Harness
-# ---------------------------------------------------------------------------
 
 _PASS = 0
 _FAIL = 0

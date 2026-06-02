@@ -2,7 +2,7 @@
 # Default configuration for python -m spart run and python -m spart demo.
 # Override any value with --config your_config.yaml on the CLI.
 
-csv_path: null              # required for 'run' command; null for 'demo'
+csv_path: null              # required for 'run' command. null for 'demo'
 output_dir: results
 
 n_frames: null              # null = use all available frames

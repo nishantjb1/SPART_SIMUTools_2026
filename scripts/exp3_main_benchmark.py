@@ -2,8 +2,6 @@
 scripts/exp3_main_benchmark.py
 Experiment 3: Main Benchmark -- SPART vs JIT vanilla across all 4 CSVs.
 
-This replaces Table III in the paper with corrected, reproducible numbers.
-
 Two methods compared with IDENTICAL ego trajectory on each CSV:
   - JIT vanilla (B): build_segments(all) + scan_jit_vanilla each frame, no state
   - SPART full  (E): run_frame with eligibility scheduling + angular pruning,

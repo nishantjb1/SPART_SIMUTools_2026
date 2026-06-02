@@ -24,9 +24,6 @@ Metrics per condition:
 
 Gate: SEI_E >= 50x (deterministic, machine-independent; see per_condition["E"]["mean_sei"]).
 
-NOTE: Condition A (pure Python) runs ALL n_frames and is the slowest step
-      (~40-60 seconds).  A progress indicator is printed every 500 frames.
-
 Outputs (results/ablation/):
   ablation_summary.json
   per_frame_ablation.csv

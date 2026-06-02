@@ -1,7 +1,5 @@
 # configs/benchmark_config.yaml
 # Single source of truth for all benchmark parameters.
-# n_frames confirmed from vehicle_tracks_000.csv: 8875 frames available.
-# Using 8750 to match original paper and avoid boundary effects.
 # ALL experiment scripts must import this file and use these values.
 
 # --- Shared parameters: IDENTICAL for ALL methods ---
@@ -16,7 +14,7 @@ ego_circle_speed_mps: 5.398298934
 ego_circle_center: [996.0, 999.0]   # within x=[971,1021] y=[981,1018]
 
 # --- SPART-specific ---
-enable_grid: false        # NOTE: grid disabled for main benchmark.
+enable_grid: false        # grid disabled for main benchmark.
                           # INTERACTION dataset mean N~6.8 vehicles/frame
                           # is below the crossover threshold. See exp4 for
                           # the grid crossover study.
