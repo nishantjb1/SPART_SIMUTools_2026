@@ -188,31 +188,3 @@ print(f"Beams: {len(angles)}, Hits: {metrics['num_hits']}, "
       f"Candidates: {metrics['total_candidates']}, "
       f"Muted: {metrics['muted_ratio']:.1%}")
 ```
-
----
-
-## Correctness Fixes Applied in This Release
-
-The following bugs were identified and corrected before this release:
-
-| # | Bug | Impact |
-|---|-----|--------|
-| 1 | Data race in `total_candidates` inside `prange` | Non-deterministic candidate counts |
-| 2 | Ego trajectory mismatch between methods | Unfair timing comparison |
-| 3 | Frame count 3-way mismatch | Irreproducible results |
-| 4 | Grid module disabled but undisclosed | Incorrect performance characterisation |
-| 5 | Hardware specification documented incorrectly | Misleading benchmark context |
-| 6 | Theta normalisation missing in angular interval check | 2,155 pruning misses over 2,000 sampled frames |
-
----
-
-## Citation
-
-```bibtex
-@inproceedings{spart2026,
-  title     = {SPART: A Lightweight 2-D LiDAR Emulation Tool for
-               Trajectory-Dataset-Driven Autonomous Vehicle Testing},
-  booktitle = {Proceedings of EAI SIMUTools 2026},
-  year      = {2026},
-}
-```
