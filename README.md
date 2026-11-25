@@ -5,7 +5,7 @@ It replaces the brute-force O(K × M) ray–segment intersection search with two
 
 ---
 
-## Key Results (EAI SIMUTools 2026)
+## Key Results
 
 | Metric | Value |
 |--------|-------|
